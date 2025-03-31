@@ -1,0 +1,48 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore dependency files
+Pipfile
+Pipfile.lock
+poetry.lock
+requirements.txt
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignore logs and caches
+logs/
+*.log
+*.sqlite3
+*.db
+
+# Ignore test coverage reports
+htmlcov/
+.coverage
+.cache/
+
+# Ignore environment variables
+.env
+.env.local
+.env.*.backup
+
+# Ignore compiled code
+*.so
+*.dll
+*.dylib
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Docker-related files
+.dockerignore
+
+# Ignore macOS system files
+.DS_Store
