@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send with Fetch</title>
+</head>
+<body>
+    <h1>tekst do flaska</h1>
+
+    <input type="text" id="messageInput" placeholder="Type something...">
+    <button onclick="sendMessage()">Send</button>
+
+    <p id="response"></p>
+
+<script>
+    async function sendMessage() {
+        const message = document.getElementById("messageInput").value;
+
+        const response = await fetch("/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        // Render results nicely
+        const responseContainer = document.getElementById("response");
+        responseContainer.innerHTML = "";  // Clear previous results
+
+        if (Array.isArray(data)) {
+            data.forEach((item, index) => {
+                const question = document.createElement("h3");
+                question.textContent = `Q${index + 1}: ${item.question}`;
+
+                const answer = document.createElement("p");
+                answer.textContent = `A: ${item.solution}`;
+
+                responseContainer.appendChild(question);
+                responseContainer.appendChild(answer);
+            });
+        } else {
+            responseContainer.textContent = "Unexpected response format.";
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
